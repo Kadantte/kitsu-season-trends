@@ -21,16 +21,16 @@ jobs:
     - name: Print GitHub event action
       run: echo "${{ github.event.action }}"
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       if: ${{ github.event.action != 'repository_dispatch' }}
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       if: ${{ github.event.action == 'repository_dispatch' }}
       with:
         ref: ${{ github.event.client_payload.sha }}
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
 
